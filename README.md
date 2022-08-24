@@ -41,7 +41,7 @@ $ service k3s status
 
 ### III. KampSingle 설치
 
-#### 1. docker image upload
+#### 1. docker image download
 ```sh
 $ sudo ctr image pull docker.io/aiblabco/jupyterhub-single:1.0.1
 $ sudo ctr image pull docker.io/aiblabco/jupyterlab:1.0.14
