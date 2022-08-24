@@ -50,7 +50,7 @@ sudo ctr image pull docker.io/aiblabco/kampnote-single:1.0.1
 
 #### 2. yaml 파일 다운로드
 ```
-curl https://gitlab.com/khmars/kamp3/-/raw/main/KAMP3.tar?inline=false|tar xf -
+curl https://gitlab.com/aiblabco/kamp-single/-/raw/main/KAMP3.tar?inline=false|tar xf -
 ```
 
 #### 3. Namespace 생성
