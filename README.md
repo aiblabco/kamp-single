@@ -23,51 +23,51 @@ curl, K3s, KampSingle 순서로 설치한다
 
 ### I. curl 설치
 
-```
-sudo apt-get update
-sudo apt-get install -y curl
+```sh
+$ sudo apt-get update
+$ sudo apt-get install -y curl
 ```
 
 ### II. K3s 설치
 
-```
-curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG_MODE="644" sh -s –
+```sh
+$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG_MODE="644" sh -s –
 ```
 
 K3s 서비스 실행 여부 확인
-```
-service k3s status
+```sh
+$ service k3s status
 ```
 
 ### III. KampSingle 설치
 
 #### 1. docker image upload
-```
-sudo ctr image pull docker.io/aiblabco/jupyterhub-single:1.0.1
-sudo ctr image pull docker.io/aiblabco/jupyterlab:1.0.14
-sudo ctr image pull docker.io/aiblabco/kampnote-single:1.0.1
+```sh
+$ sudo ctr image pull docker.io/aiblabco/jupyterhub-single:1.0.1
+$ sudo ctr image pull docker.io/aiblabco/jupyterlab:1.0.14
+$ sudo ctr image pull docker.io/aiblabco/kampnote-single:1.0.1
 ```
 
 #### 2. yaml 파일 다운로드
-```
-curl https://raw.githubusercontent.com/aiblabco/kamp-single/main/KAMP3.tar | tar xf -
+```sh
+$ curl https://raw.githubusercontent.com/aiblabco/kamp-single/main/KAMP3.tar | tar xf -
 ```
 
 #### 3. Namespace 생성
-```
-kubectl create ns jupyterhub
+```sh
+$ kubectl create ns jupyterhub
 ```
 
 #### 4. jupyterhub 설치
-```
-kubectl apply -f kamp-helm.yaml
-kubectl apply -f kampnote-lib.yaml
-kubectl apply -f jhub-ingress.yaml
+```sh
+$ kubectl apply -f kamp-helm.yaml
+$ kubectl apply -f kampnote-lib.yaml
+$ kubectl apply -f jhub-ingress.yaml
 ```
 
 설치후 확인 
-```
-Kubectl get pod -n jupyterhub
+```sh
+$ kubectl get pod -n jupyterhub
 ```
 의 결과가 모든 pod에 대해 STATUS값이 Running 상태여야 합니다.
 
