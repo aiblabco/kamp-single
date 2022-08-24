@@ -48,6 +48,9 @@ $ sudo ctr image pull docker.io/aiblabco/jupyterlab:1.0.14
 $ sudo ctr image pull docker.io/aiblabco/kampnote-single:1.0.1
 ```
 
+ctr: failed to copy: read tcp 192.168.0.100:57720->104.18.124.25:443: read: connection reset by peer
+오류 발생시 재시도하여 완료될 때가지 수행하여 주시기 바랍니다.
+
 #### 2. yaml 파일 다운로드
 ```sh
 $ curl https://raw.githubusercontent.com/aiblabco/kamp-single/main/KAMP3.tar | tar xf -
