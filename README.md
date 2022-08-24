@@ -14,7 +14,7 @@ OS : ubuntu 18.04
 VCPU : 4 core이상
 STORAGE : 100GB 이상
 설치 및 이용을 위한 Floating IP 필요
-방화벽 포트 오픈 : http, https (ssh – 설치를 위한 접근 포트)
+방화벽 포트 오픈 : http(80), https(443) (ssh – 설치를 위한 접근 포트)
 클라우드 VM ssh 접근
 ```
 
@@ -78,5 +78,7 @@ $ kubectl get pod -n jupyterhub
 클라우드 VM의 ip를 브라우져에 입력하여 로그인화면 확인
 
 ```
-http://VM IP/kamp
+http://Floating IP/kamp
+https://Floating IP/kamp
+
 ```
