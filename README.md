@@ -31,7 +31,7 @@ $ sudo apt-get install -y curl
 ### II. K3s 설치
 
 ```sh
-$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG_MODE="644" sh -s –
+$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG_MODE="644" sh -s -
 ```
 
 K3s 서비스 실행 여부 확인
