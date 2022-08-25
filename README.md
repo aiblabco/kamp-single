@@ -80,5 +80,10 @@ $ kubectl get pod -n jupyterhub
 ```
 http://Floating IP/kamp
 https://Floating IP/kamp
-
 ```
+
+#### 6. 기본 관리자 아이디/암호
+관리자 아이디 : admin
+관리자 비밀번호 : 1234
+
+
