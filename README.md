@@ -43,9 +43,10 @@ $ service k3s status
 
 #### 1. docker image pull
 ```sh
-$ sudo ctr image pull docker.io/aiblabco/jupyterhub-single:1.0.1
-$ sudo ctr image pull docker.io/aiblabco/jupyterlab:1.0.14
-$ sudo ctr image pull docker.io/aiblabco/kampnote-single:1.0.1
+$ sudo docker image pull aiblabco/jupyterhub-single:1.0.2
+$ sudo docker image pull aiblabco/jupyterlab:1.0.14
+$ sudo docker image pull aiblabco/jupyterlab-gpu:1.0.14
+$ sudo docker image pull aiblabco/kampnote-single:1.0.1
 ```
 
 ctr: failed to copy: read tcp 192.168.0.100:57720->104.18.124.25:443: read: connection reset by peer
@@ -64,6 +65,7 @@ $ kubectl create ns jupyterhub
 #### 4. jupyterhub 설치
 ```sh
 $ kubectl apply -f kamp-helm.yaml
+$ kubectl apply -f kamp-clusterrole.yaml
 $ kubectl apply -f kampnote-lib.yaml
 $ kubectl apply -f jhub-ingress.yaml
 ```
