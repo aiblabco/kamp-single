@@ -1,10 +1,11 @@
 # 설치
 
 ## NHN Toast 클라우드 기반 
-설치 대상 인스턴스
+### 설치 대상 인스턴스
 - GPU Instance : Ubuntu Server 18.04.6 LTS with NVIDIA (2021.12.21)
 
 
+### docker 설치
 ```sh
 $ sudo apt-get update
 GPG Error ....
@@ -61,7 +62,7 @@ default-runtime 추가
 $ sudo service docker restart
 ```
 
-k3s install
+### k3s install
 ```sh
 $ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --docker
 ```
@@ -84,5 +85,12 @@ spec:
 $ kubectl apply -f nvidia-device-plugin.yaml
 ```
 
+#### docker image pull
+```sh
+$ sudo docker image pull aiblabco/jupyterhub-single:1.0.2
+$ sudo docker image pull aiblabco/jupyterlab:1.0.14
+$ sudo docker image pull aiblabco/jupyterlab-gpu:1.0.14
+$ sudo docker image pull aiblabco/kampnote-single:1.0.1
+```
 
 
