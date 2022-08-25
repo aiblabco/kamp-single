@@ -1,31 +1,19 @@
 # 설치 순서
 
 ## 소개
-k3s 기반으로 제공한다.
-주피터 기반 소프트웨어 제공으로 ML개발을 집중할 수 있도록 제공한다.
+k3s 기반으로 제공한다. 
 
-## 설치 조건
-설치 :
-조건 : 
+주피터 기반 소프트웨어 제공으로 ML개발을 집중할 수 있도록 제공한다. 
 
-```
-OS : ubuntu 18.04
-메모리 : 8GB 이상
-VCPU : 4 core이상
-STORAGE : 100GB 이상
-설치 및 이용을 위한 Floating IP 필요
-방화벽 포트 오픈 : http(80), https(443) (ssh – 설치를 위한 접근 포트)
-클라우드 VM ssh 접근
-```
 ## 설치
 설치순서는 k3s설치, docker image pull, jupyterhub설치 순으로 진행한다.
 
 ### 1.k3s 설치 및 docker image pull
 k3s의 설치는 아래 문서를 참조한다. 
 
-CPU모델:  CPU-INSTALL.md
+CPU모델:  [CPU-INSTALL.md](CPU-INSTALL.md)
 	
-GPU모델:  GPU-INSTALL.md
+GPU모델:  [GPU-INSTALL.md](GPU-INSTALL.md)
 
 K3s 서비스 확인
 ```sh
