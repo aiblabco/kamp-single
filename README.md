@@ -51,10 +51,37 @@ $ sudo vi /etc/docker/daemon.json
 	,"default-runtime": "nvidia"
     }
 }
+
+$ service docker restart
+```
+
+### k3s 설치 
+```sh
+$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --docker
+
+$ service k3s status
+```
+
+### 설치용 yaml 파일 다운로드
+
+### nvidia device plugin 설치
+```sh
+$ kubectl apply -f hc-nvidia-device-plugin.yaml
+
+```yaml
+hc-nvidia-device-plugin.yaml
+```sh
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nvidia-device-plugin
+  namespace: kube-system
+spec:
+  chart: nvidia-device-plugin
+  repo: https://nvidia.github.io/k8s-device-plugin
 ```
 
 
-### 1.k3s 설치 및 docker image pull
 k3s의 설치는 아래 문서를 참조한다. 
 
 CPU모델:  [CPU-INSTALL.md](CPU-INSTALL.md)
@@ -65,6 +92,8 @@ K3s 서비스 확인
 ```sh
 $ service k3s status
 ```
+
+### k
 
 ### 2.yaml 파일 다운로드
 ```sh
