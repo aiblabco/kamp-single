@@ -6,7 +6,54 @@ k3s 기반으로 제공한다.
 주피터 기반 소프트웨어 제공으로 ML개발을 집중할 수 있도록 제공한다. 
 
 ## 설치
-설치순서는 k3s설치, docker image pull, jupyterhub설치 순으로 진행한다.
+설치순서는 docker 설치, k3s설치, docker image pull, jupyterhub설치 순으로 진행한다.
+
+### 시스템 최신 업데이트 및 필수 패키지 설치
+```sh
+$ sudo apt-get update
+$ sudo apt-get install -y curl ca-certificates
+```
+* NHN Toast Ubuntu 18.04.6 LTS with NVIDIA (2021.12.21) 이미지는 apt-get update 실행시 GPG 오류가 발생한다. fix 방법
+```sh
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
+```
+
+### docker 설치
+```sh
+$ curl https://get.docker.com | sh
+$ service docker start
+```
+
+### nvidia-docker2 설치
+```sh
+$ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+      && curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+      && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+            sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+            sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+$ sudo apt-get update
+
+$ sudo apt-get install -y nvidia-docker2
+```
+
+### nvidia-docker2를 docker default-runtime으로 설정
+```sh
+$ sudo vi /etc/docker/daemon.json
+```
+```
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+	<span style="color:red">,"default-runtime": "nvidia"</span>
+    }
+}
+```
+
+
 
 ### 1.k3s 설치 및 docker image pull
 k3s의 설치는 아래 문서를 참조한다. 
