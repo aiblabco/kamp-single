@@ -71,7 +71,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/h
 
 ### kamp note 설치 순서
 ```sh
-$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/prepare01.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/pre-prepare.yaml
 $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/hc-kampnote.yaml
 ```
 
