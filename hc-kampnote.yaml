@@ -1,0 +1,71 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: jupyterhub
+  namespace: kube-system
+spec:
+  chart: https://jupyterhub.github.io/helm-chart/jupyterhub-0.11.1.tgz
+  targetNamespace: jupyterhub
+  valuesContent: |-
+    hub:
+      baseUrl: /kamp
+      config:
+        Authenticator:
+          admin_users:
+            - admin
+        JupyterHub:
+          authenticator_class: kampsingleauthenticator.KampSingleAuthenticator
+      extraConfig:
+        logoConfig: |
+          c.JupyterHub.logo_file = '/usr/local/share/jupyterhub/static/images/kampnote.png'
+          import os, kampsingleauthenticator
+          c.JupyterHub.template_paths = [f"{os.path.dirname(kampsingleauthenticator.__file__)}/templates/", '/etc/jupyterhub/templates']
+      extraEnv:
+        JUPYTER_ENABLE_LAB: "1"
+      image:
+        name: aiblabco/jupyterhub-single
+        tag: 1.0.2
+    proxy:
+      secretToken: 4e3ae0a1ca1cd03b04967d86a3e34d4399cf34c98e7c7b8a23da93613d97aa64
+      service:
+        type: ClusterIP
+    rbac:
+      enabled: true
+
+    singleuser:
+      cmd: start-notebook.sh
+      defaultUrl: /lab
+      profileList:
+      - default: true
+        description: CPU 모델
+        display_name: Tensorflow 2.4.1 with 32G Memory
+        kubespawner_override:
+          image: aiblabco/jupyterlab:1.0.14
+          memory:
+            guarantee: 4G
+            limit: 32G
+          environment:
+            GRANT_SUDO: "yes"
+            NOTEBOOK_ARGS: --allow-root --debug
+            POD_MEM_LIMIT: "32"
+            KAMP_NOTE_HOST: "http://kampnote:8080/plugin"
+            JUPYTERHUB_SINGLEUSER_APP: "jupyter_server.serverapp.ServerApp"
+      - description: GPU 모델
+        display_name: GPU Tensorflow 2.4.1 with 32G Memory
+        kubespawner_override:
+          extra_resource_limits:
+            nvidia.com/gpu: "1"
+    #      image: cschranz/gpu-jupyter:v1.4_cuda-11.0_ubuntu-18.04_python-only
+          image: aiblabco/jupyterlab-gpu:1.0.14
+          memory:
+            guarantee: 4G
+            limit: 32G
+          environment:
+            GRANT_SUDO: "yes"
+            NOTEBOOK_ARGS: --allow-root --debug
+            POD_MEM_LIMIT: "32"
+            KAMP_NOTE_HOST: "http://kampnote:8080/plugin"
+            JUPYTERHUB_SINGLEUSER_APP: "jupyter_server.serverapp.ServerApp"
+      storage:
+        capacity: 20Gi
+      uid: 0
