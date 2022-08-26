@@ -71,23 +71,10 @@ $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/h
 
 ### kamp note 설치 순서
 ```sh
-$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/pre-.yaml
-$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/hc-nvidia-device-plugin.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/prepare01.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/hc-kampnote.yaml
 ```
 
-
-k3s의 설치는 아래 문서를 참조한다. 
-
-CPU모델:  [CPU-INSTALL.md](CPU-INSTALL.md)
-	
-GPU모델:  [GPU-INSTALL.md](GPU-INSTALL.md)
-
-K3s 서비스 확인
-```sh
-$ service k3s status
-```
-
-### k
 
 ### 2.yaml 파일 다운로드
 ```sh
