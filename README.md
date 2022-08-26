@@ -69,6 +69,12 @@ $ service k3s status
 $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/hc-nvidia-device-plugin.yaml
 ```
 
+### kamp note 설치 순서
+```sh
+$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/pre-.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/hc-nvidia-device-plugin.yaml
+```
+
 
 k3s의 설치는 아래 문서를 참조한다. 
 
