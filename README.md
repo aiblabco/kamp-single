@@ -41,7 +41,6 @@ $ sudo apt-get install -y nvidia-docker2
 ```sh
 $ sudo vi /etc/docker/daemon.json
 ```
-```
 {
     "runtimes": {
         "nvidia": {
@@ -51,7 +50,6 @@ $ sudo vi /etc/docker/daemon.json
 	<span style="color:red">,"default-runtime": "nvidia"</span>
     }
 }
-```
 
 
 
