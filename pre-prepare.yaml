@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jupyterhub
+---
+apiVersion: v1
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hub
+  labels:
+    app: jupyterhub
+    app.kubernetes.io/managed-by: Helm
+    chart: jupyterhub-0.11.1
+    component: hub
+    heritage: Helm
+    release: jupyterhub
+rules:
+  - apiGroups: [""]       # "" add node role
+    resources: ["nodes"]
+    verbs: ["get", "watch", "list"]
+---
+apiVersion: v1
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hub
+  labels:
+    app: jupyterhub
+    app.kubernetes.io/managed-by: Helm
+    chart: jupyterhub-0.11.1
+    component: hub
+    heritage: Helm
+    release: jupyterhub
+subjects:
+  - kind: ServiceAccount
+    name: hub
+    namespace: jupyterhub
+roleRef:
+  kind: ClusterRole
+  name: hub
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-routers
+  namespace: jupyterhub
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /kamp
+            pathType: Prefix
+            backend:
+              service:
+                name: proxy-public
+                port:
+                  number: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kampnote
+  namespace: jupyterhub
+  labels:
+    app: kampnote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kampnote
+  template:
+    metadata:
+      labels:
+        app: kampnote
+    spec:
+      containers:
+      - name: kampnote
+        image: aiblabco/kampnote-single:1.0.1
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kampnote
+  namespace: jupyterhub
+spec:
+  selector:
+    app: kampnote
+  ports:
+    - protocol: TCP
+      port: 8080
