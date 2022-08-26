@@ -38,7 +38,7 @@ $ sudo apt-get install -y nvidia-docker2
 ```
 
 ### nvidia-docker2를 docker default-runtime으로 설정
-<span style="color:red">**,"default-runtime": "nvidia"**</span> 추가
+**,"default-runtime": "nvidia"** 추가
 ```sh
 $ sudo vi /etc/docker/daemon.json
 
