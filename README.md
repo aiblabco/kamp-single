@@ -67,10 +67,9 @@ $ service k3s status
 ### nvidia device plugin 설치
 ```sh
 $ kubectl apply -f hc-nvidia-device-plugin.yaml
-
-```yaml
+```
 hc-nvidia-device-plugin.yaml
-```sh
+```yaml
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
