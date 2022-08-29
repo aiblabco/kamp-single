@@ -52,7 +52,7 @@ $ sudo vi /etc/docker/daemon.json
     }
 }
 
-$ service docker restart
+$ sudo service docker restart
 ```
 
 ### k3s 설치 
