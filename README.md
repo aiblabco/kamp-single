@@ -75,26 +75,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/p
 $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/hc-kampnote.yaml
 ```
 
-
-### 2.yaml 파일 다운로드
-```sh
-$ curl https://raw.githubusercontent.com/aiblabco/kamp-single/main/KAMP3.tar | tar xf -
-```
-
-### 3.Namespace 생성
-```sh
-$ kubectl create ns jupyterhub
-```
-
-### 4.jupyterhub 설치
-```sh
-$ kubectl apply -f kamp-helm.yaml
-$ kubectl apply -f kamp-clusterrole.yaml
-$ kubectl apply -f kampnote-lib.yaml
-$ kubectl apply -f jhub-ingress.yaml
-```
-
-### 5.설치후 확인 
+### 설치후 확인 
 ```sh
 $ kubectl get pod -n jupyterhub
 ```
