@@ -62,11 +62,17 @@ $ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG
 $ service k3s status
 ```
 
-### 설치용 yaml 파일 다운로드
-
 ### nvidia device plugin 설치
 ```sh
 $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/hc-nvidia-device-plugin.yaml
+```
+
+### 설치 도커 이미지 설치
+```sh
+$ sudo docker image pull aiblabco/jupyterhub-single:1.0.2
+$ sudo docker image pull aiblabco/jupyterlab:1.0.14
+$ sudo docker image pull aiblabco/jupyterlab-gpu:1.0.14
+$ sudo docker image pull aiblabco/kampnote-single:1.0.1
 ```
 
 ### kamp note 설치 순서
