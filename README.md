@@ -61,7 +61,7 @@ $ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.22.8+k3s1 K3S_KUBECONFIG
 
 $ service k3s status
 ```
-### http 포트 10080 traefik 설치
+### http 포트 10443 traefik 설치
 ```sh
 $ kubectl apply -f https://raw.githubusercontent.com/aiblabco/kamp-single/main/traefik.yaml
 ```
@@ -95,7 +95,7 @@ $ kubectl get pod -n jupyterhub
 클라우드 VM의 ip를 브라우져에 입력하여 로그인화면 확인
 
 ```
-http://Floating IP:10080/kamp
+http://Floating IP:10443/kamp
 ```
 
 #### 7. 기본 관리자 아이디/암호
