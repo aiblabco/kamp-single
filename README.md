@@ -21,7 +21,7 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
 ### docker 설치
 ```sh
 $ curl https://get.docker.com | sh
-$ service docker start
+$ sudo service docker start
 ```
 
 ### nvidia-docker2 설치
