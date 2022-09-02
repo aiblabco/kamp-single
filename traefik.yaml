@@ -21,7 +21,7 @@ spec:
       enabled: true
     ports:
       web:
-        exposedPort: 10080
+        exposedPort: 10443
       websecure:
         expose: false
         tls:
