@@ -9,13 +9,15 @@ k3s 기반으로 제공한다.
 설치순서는 docker 설치, k3s설치, docker image pull, jupyterhub설치 순으로 진행한다.
 
 ### 시스템 최신 업데이트 및 필수 패키지 설치
-```sh
-$ sudo apt-get update
-$ sudo apt-get install -y curl ca-certificates
-```
 * NHN Toast Ubuntu 18.04.6 LTS with NVIDIA (2021.12.21) 이미지는 apt-get update 실행시 GPG 오류가 발생한다. fix 방법
 ```sh
 $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
+```
+
+
+```sh
+$ sudo apt-get update
+$ sudo apt-get install -y curl ca-certificates
 ```
 
 ### docker 설치
