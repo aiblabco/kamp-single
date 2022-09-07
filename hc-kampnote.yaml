@@ -24,7 +24,7 @@ spec:
         JUPYTER_ENABLE_LAB: "1"
       image:
         name: aiblabco/jupyterhub-single
-        tag: 1.0.2
+        tag: 1.0.3
     proxy:
       secretToken: 4e3ae0a1ca1cd03b04967d86a3e34d4399cf34c98e7c7b8a23da93613d97aa64
       service:
